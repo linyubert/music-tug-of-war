@@ -52,25 +52,7 @@
 - 初學班先用「高音譜號＋僅五線之內」（9 個音），熟了再加加線
 - 用「獲勝分差 6 分」跑短局，一節課可以輪很多組
 
----
 
-## 換掉音效或封面
-
-- **歡呼聲**：把你的音檔命名為 `hoory.mp3` 放在同一資料夾即可。程式也會依序尋找 `hooray.mp3`、`hooray.wav`、`hooray.m4a`、`cheer.mp3`
-- **封面**：換掉 `cover.jpg` 即可。若新圖比例不是 16:9，需同步調整 `index.html` 裡 `#stage` 的 `--sw` 與高度計算，以及封面按鈕的百分比位置
-
-## 修改連結
-
-`index.html` 裡搜尋 `const LINKS`：
-
-```js
-const LINKS = {
-  threads: "https://www.threads.com/@lycbert",
-  youtube: "https://www.youtube.com/@datoemusic"
-};
-```
-
----
 
 ## 技術
 
