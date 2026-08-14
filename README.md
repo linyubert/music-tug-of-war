@@ -1,66 +1,66 @@
-# 五線譜拔河賽
+# Staff Tug of War
 
-給音樂課的分組競賽遊戲。兩隊在**同一台大觸控螢幕**上**同時**搶答五線譜音名，答對就把繩子往自己這邊拉一格，先把繩子拉過界線、或時間到時領先的隊伍獲勝。
+A team competition for music class. Two players answer note names on the same large touchscreen **at the same time**, each correct answer pulling the rope one notch their way. Win by dragging it over the line, or by leading when time runs out.
 
-單一 HTML 檔案，不需安裝、不需連網（第一次開啟後即可離線使用），雙擊就能玩。
+Staff Tug of War is part of **Dato Music Lab** (https://datomusiclab.dpdns.org), a working elementary music teacher's studio in Taipei.
 
-**線上試玩 → https://linyubert.github.io/music-tug-of-war/**
+## What it is
 
-![封面](cover.jpg)
+Sight-reading practice is usually silent and private, which makes it invisible to everyone except the child doing it. Turning it into a rope the whole class can watch changes what the room does during the drill.
 
----
+The design problem was simultaneity. Most two-player web games take turns, or use one global lock so the faster player eats the other's tap. Here both halves of the screen track their own touch points independently, so two students can press at the same instant — or one team can hammer their side — and every press registers.
 
-## 特色
+## Features
 
-**真正的同時作答**　用 Pointer Events 處理多點觸控，左右兩區各自追蹤自己的觸控點，沒有任何全域鎖。兩個學生同時按、甚至同一隊連按，都各自獨立生效，不會互相吃掉。
+**Genuinely simultaneous input.** Pointer Events, with the left and right zones tracking their own touches and no global lock anywhere. Nothing gets swallowed.
 
-**記譜法正確**　譜號直接內嵌 Bravura（SMuFL 標準樂譜字型）的原始輪廓，不依賴系統字型。定位點就是 SMuFL 定義的錨點：G 譜號的螺旋圓心對準第二線 G4、F 譜號的兩點夾住第四線 F3。譜線粗細、符頭比例、加線長度全部依 SMuFL 比例推導，縮放時不會走樣。
+**Notation done properly.** Clefs embed Bravura's original outlines — the SMuFL standard music font — rather than depending on a system font. Anchoring follows the SMuFL specification: the spiral of the G clef centres on the second line, and the two dots of the F clef straddle the fourth. Staff line weight, notehead proportions and ledger line lengths are all derived from SMuFL ratios, so nothing distorts when the display scales.
 
-**出題平均**　洗牌抽牌制，一副牌抽完才重洗，確保每個音都輪得到，不會某些音整場沒考到。
+**Even question distribution.** Cards are dealt from a shuffled deck and the deck is only reshuffled once exhausted, so every note comes up and none is missed for an entire match.
 
-**答錯有教學價值**　答錯時會亮出正確答案讓學生看一眼，再自動換下一題；比賽結束後列出「這場最常答錯的音」，方便安排複習。
+**Wrong answers teach.** A miss flashes the correct answer long enough to register before moving on, and the end-of-match summary lists the notes this class got wrong most often — which is exactly the revision list for next lesson.
 
-**拔河動畫**　依真實力學繪製：身體後仰約 35 度、雙腳蹬在身體前方、繩子貼髖部通過。得分方後仰猛拉並揚起塵土，失分方被拖著往前滑並留下鞋底刮痕。
+**Physically believable animation.** The tug is drawn from real mechanics: bodies lean back around 35 degrees, feet plant ahead of the body, rope passes across the hip. The scoring team hauls back and kicks up dust; the losing team is dragged forward, leaving scuff marks.
 
----
+## How to use
 
-## 怎麼用
+Keep three files together — `index.html`, `cover.jpg`, `hoory.mp3` — and open `index.html`. Nothing to install; after the first load it runs with no network at all.
 
-1. 三個檔案放在同一個資料夾：`index.html`、`cover.jpg`、`hoory.mp3`
-2. 雙擊 `index.html`
-3. 首頁按「開始挑戰」直接開打，或按「選擇你的隊伍」先進設定頁
-4. 建議按左上角的「全螢幕」
+1. Press **Start** on the cover to play immediately, or **Choose your team** to open settings first
+2. Use the fullscreen button, top left
 
-### 設定項目
+### Settings
 
-| 項目 | 選項 |
-| --- | --- |
-| 譜號 | 高音譜號／低音譜號／兩者混合 |
-| 音域 | 僅五線之內／含加線 |
-| 比賽時間 | 1／2／3／5 分鐘 |
-| 獲勝分差 | 6／8／10／12 分 |
-| 作答鍵高度 | 0～36vh，配合螢幕尺寸與學生身高把按鈕整組往上抬 |
-| 音效 | 最後十秒倒數聲與勝利歡呼，可全部靜音 |
-| 隊名 | 兩隊各自命名 |
+| Option | Choices |
+|:---|:---|
+| Clef | Treble / bass / mixed |
+| Range | Within the staff only / including ledger lines |
+| Match length | 1 / 2 / 3 / 5 minutes |
+| Winning margin | 6 / 8 / 10 / 12 points |
+| Answer button height | 0–36vh, to suit screen size and how tall the students are |
+| Sound | Final ten-second countdown and victory cheer, mutable |
+| Team names | Both teams |
 
-設定會存在瀏覽器裡，下次開啟自動沿用。
+Settings persist in the browser and carry over to the next lesson.
 
-### 教室使用建議
+### In the classroom
 
-- 兩個學生各站一邊，其他組員在後面看譜提示
-- 「作答鍵高度」對低年級調高一點，孩子不用彎腰
-- 初學班先用「高音譜號＋僅五線之內」（9 個音），熟了再加加線
-- 用「獲勝分差 6 分」跑短局，一節課可以輪很多組
+- Two students at the screen, the rest of each team behind them reading the staff and calling advice
+- Raise the answer button height for younger children so nobody has to stoop
+- Start beginners on treble clef within the staff — nine notes — and add ledger lines once that is comfortable
+- A 6-point winning margin makes short matches, so a single lesson can rotate through many pairs
 
+## Tech
 
+Native HTML, CSS and JavaScript. Zero frameworks, zero build step, zero external dependencies. Both the staff and the tug-of-war scene are SVG generated at runtime.
 
-## 技術
+- Clef and notehead outlines come from [Bravura](https://github.com/steinbergmedia/bravura) (SIL Open Font License 1.1)
+- Sound effects are synthesised with the Web Audio API and need no audio files
 
-原生 HTML / CSS / JavaScript，零框架、零建置流程、零外部相依。五線譜與拔河場景都是即時產生的 SVG。
+## License
 
-- 譜號與符頭輪廓取自 [Bravura](https://github.com/steinbergmedia/bravura)（SIL Open Font License 1.1）
-- 音效以 Web Audio API 即時合成，不需額外音檔
+Code is MIT — see [LICENSE](LICENSE). Artwork, audio and the embedded font have separate terms; see [NOTICE.md](NOTICE.md).
 
-## 授權
+## More from Dato Music Lab
 
-MIT License，詳見 [LICENSE](LICENSE)。歡迎其他老師自由使用與修改。
+Reading notes is one half; producing them is the other — the studio also builds recorder games where a microphone listens to what the child actually plays and flies a plane or slices fruit accordingly. And for the ear rather than the eye, there is a detective game for spotting a single note bent sharp or flat. All at **https://datomusiclab.dpdns.org**.
